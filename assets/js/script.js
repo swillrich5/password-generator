@@ -45,6 +45,11 @@ function generatePassword() {
     passwordString = passwordString + passwordCharacters.charAt(randomNumber);
     randomNumber = Math.floor(Math.random() * passwordCharacters.length);
   }
+
+  if (passwordString === "") {
+    alert("No character sets included for password creation.  Please try again.");
+    return("No character set selected - please try again");
+  }
   return passwordString;
 }
 

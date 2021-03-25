@@ -1,18 +1,22 @@
 // Assignment Code
+// getPasswordLength() asks the user for the length of the password they
+// want generated.  It's broken out to perform error checking - valid number 
+// and length between 0 and 128
 function getPasswordLength() {
   var done = false;
   while (!done) {
-    var passwordLength = prompt("Password Length (0 to 128 characters):","8");
-    if (!isNaN(passwordLength) && passwordLength > 0 && passwordLength <= 128) {
+    var passwordLength = prompt("Password Length (8 to 128 characters):","8");
+    if (!isNaN(passwordLength) && passwordLength >= 8 && passwordLength <= 128) {
         return passwordLength;
       } else {
-          alert("Please enter a number between 1 and 128 for the password length");
+          alert("Please enter a number between 8 and 128 for the password length");
     }
   }
 };
 
-
-
+// Generates the password and returns it to the writePassword() 
+// function for displaying.  Also, if no characters sets are selected,
+// an error message is displayed.
 function generatePassword() {
   var specialCharactersString = "!''#$%&'()*+-./:;<=>?@[\\]^_`{|}~";
   var lowercaseString = "abcdefghijklmnopqrstuvwxyz";
@@ -53,6 +57,7 @@ function generatePassword() {
   return passwordString;
 }
 
+// grabs the "Generate Password" button
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
